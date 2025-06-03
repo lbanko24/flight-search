@@ -15,6 +15,8 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+import static hr.abysalto.flight_search.util.FlightSearchUtil.*;
+
 @Service
 public class FlightCacheService {
     private static final Logger logger = LoggerFactory.getLogger(FlightCacheService.class);
@@ -67,34 +69,5 @@ public class FlightCacheService {
     public void cleanupCache() {
         int n = flightRepository.deleteExpired(getExpiryThreshold());
         logger.info("Cleaned up {} entries from cache", n);
-    }
-
-    private static Specification<Flight> flightHasDepartureAirport(String airport) {
-        return (root, query, cb) -> cb.equal(root.get("departureAirport"), airport);
-    }
-
-    private static Specification<Flight> flightHasDestinationAirport(String airport) {
-        return (root, query, cb) -> cb.equal(root.get("destinationAirport"), airport);
-    }
-
-    private static Specification<Flight> flightHasDepartureDate(Date date) {
-        return (root, query, cb) -> cb.equal(root.get("departureDate"), date);
-    }
-
-    private static Specification<Flight> flightHasReturnDate(Date date) {
-        return (root, query, cb) -> cb.equal(root.get("returnDate"), date);
-    }
-
-    private Specification<Flight> flightHasCurrency(String currency) {
-        return (root, query, cb) -> cb.equal(root.get("currency"), currency);
-    }
-
-    private static Specification<Flight> flightHasPassengerCount(int passengers) {
-        return (root, query, cb) -> cb.equal(root.get("passengers"), passengers);
-    }
-
-    private static Specification<Flight> flightIsNotExpired(LocalDateTime expiryThreshold) {
-        return (root, query, cb) -> cb.greaterThanOrEqualTo(root.get("createdOn"),
-                expiryThreshold);
     }
 }
