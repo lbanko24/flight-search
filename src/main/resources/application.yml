@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    default: dev
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+
+app:
+  cache:
+    ttl: 30m
+    cleanupRate: 3600000
+  amadeus:
+    client_id: 
+    client_secret: 

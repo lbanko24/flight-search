@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="add-flight-table" author="lbanko">
+        <createTable tableName="flight">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="departure_airport" type="VARCHAR(3)"/>
+            <column name="destination_airport" type="VARCHAR(3)"/>
+            <column name="departure_date" type="DATE"/>
+            <column name="return_date" type="DATE"/>
+            <column name="transfers" type="INTEGER"/>
+            <column name="return_transfers" type="INTEGER"/>
+            <column name="passengers" type="INTEGER"/>
+            <column name="price" type="NUMERIC(10, 2)"/>
+            <column name="currency" type="VARCHAR(3)"/>
+            <column name="created_on" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
