@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class AmadeusService implements FlightSearchService {
+public class AmadeusService {
     private static final Logger logger = LoggerFactory.getLogger(AmadeusService.class);
 
     private static final String FLIGHT_OFFER_URL = "https://test.api.amadeus.com/v2/shopping/flight-offers"
@@ -63,7 +63,6 @@ public class AmadeusService implements FlightSearchService {
         return (String) response.getBody().get("access_token");
     }
 
-    @Override
     public List<Flight> searchFlights(String departureAirport, String destinationAirport,
                                       String departureDate, String returnDate,
                                       int passengers, String currency) {
