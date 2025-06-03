@@ -83,7 +83,7 @@ public class AmadeusService implements FlightSearchService {
         return flights;
     }
 
-    public List<Flight> fetchFlights(String departureAirport, String destinationAirport,
+    private List<Flight> fetchFlights(String departureAirport, String destinationAirport,
                                 String departureDate, String returnDate,
                                 int passengers, String currency) {
         HttpHeaders headers = new HttpHeaders();
